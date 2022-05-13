@@ -9,10 +9,16 @@ namespace ProjetoSushiTime.Controllers
 {
     public class ClientesController : Controller
     {
+        private readonly Contexto db;
+        public ClientesController(Contexto contexto)
+        {
+            db = contexto;
+        }
+
         // GET: ClientesController
         public ActionResult Index()
         {
-            return View();
+            return View(db.CLIENTES.ToList());
         }
 
         // GET: ClientesController/Details/5
