@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProjetoSushiTime.Models;
 
 namespace ProjetoSushiTime
 {
@@ -13,5 +14,7 @@ namespace ProjetoSushiTime
         {}
 
         public DbSet<Cliente> CLIENTES { get; set; }
+
+        public DbSet<ProjetoSushiTime.Models.Produto> Produto { get; set; }
     }
 }
