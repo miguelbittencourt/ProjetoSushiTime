@@ -11,11 +11,11 @@ namespace ProjetoSushiTime.Controllers
     public class ProdutosController : Controller
     {
         private readonly Contexto db;
-
         public ProdutosController(Contexto contexto)
         {
             db = contexto;
         }
+
         // GET: ProdutosController
         public ActionResult Index()
         {
