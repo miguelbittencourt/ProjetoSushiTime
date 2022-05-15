@@ -13,6 +13,6 @@ namespace ProjetoSushiTime
 
         public DbSet<Cliente> CLIENTES { get; set; }
 
-        public DbSet<Produtos> PRODUTOS { get; set; }
+        public DbSet<Produto> PRODUTOS { get; set; }
     }
 }

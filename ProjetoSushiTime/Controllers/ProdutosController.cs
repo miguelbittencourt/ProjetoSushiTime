@@ -37,7 +37,7 @@ namespace ProjetoSushiTime.Controllers
         // POST: ProdutosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Produtos collection)
+        public ActionResult Create(Produto collection)
         {
             try
             {

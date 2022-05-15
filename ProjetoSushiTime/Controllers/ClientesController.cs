@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjetoSushiTime.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +37,12 @@ namespace ProjetoSushiTime.Controllers
         // POST: ClientesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Cliente collection)
         {
             try
             {
+                db.CLIENTES.Add(collection);
+                db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
