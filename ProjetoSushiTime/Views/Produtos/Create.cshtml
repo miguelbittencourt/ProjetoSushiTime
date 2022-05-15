@@ -1,22 +1,17 @@
-﻿@model ProjetoSushiTime.Models.Produto
+﻿@model ProjetoSushiTime.Entidades.Produtos
 
 @{
-    ViewData["Title"] = "cadastrarProduto";
+    ViewData["Title"] = "Create";
 }
 
-<h1>cadastrarProduto</h1>
+<h1>Create</h1>
 
-<h4>Produto</h4>
+<h4>Produtos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="cadastrarProduto">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -28,9 +23,9 @@
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Preço" class="control-label"></label>
-                <input asp-for="Preço" class="form-control" />
-                <span asp-validation-for="Preço" class="text-danger"></span>
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
