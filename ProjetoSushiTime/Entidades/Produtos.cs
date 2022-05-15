@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoSushiTime.Entidades
 {
-    public class Produto
+    public class Produtos
     {
         public int Id { get; set; }
         public string Nome { get; set; }
