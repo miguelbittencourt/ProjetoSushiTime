@@ -25,6 +25,11 @@ namespace ProjetoSushiTime
         {
             services.AddControllersWithViews();
             services.AddDbContext<Contexto>(a => a.UseMySQL("Server=localhost;Database=SushiBD;Uid=root;Pwd=;"));
+            services.AddAuthentication("CookiesAuthentication").AddCookie("CookieAuthentication", option =>
+            {
+                option.LoginPath = "/Login/Entrar";
+                option.AccessDeniedPath = "/Login/Negado";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,7 @@ namespace ProjetoSushiTime
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

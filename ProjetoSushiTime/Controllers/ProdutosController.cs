@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoSushiTime.Entidades;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoSushiTime.Controllers
 {
+    [Authorize(AuthenticationSchemes = "CookieAuthentication")]
     public class ProdutosController : Controller
     {
         private readonly Contexto db;
