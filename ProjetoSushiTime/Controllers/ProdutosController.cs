@@ -54,17 +54,19 @@ namespace ProjetoSushiTime.Controllers
         // GET: ProdutosController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(db.PRODUTOS.Where(a => a.Id == id).FirstOrDefault());
         }
 
         // POST: ProdutosController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Produtos dadosTela)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                db.PRODUTOS.Update(dadosTela);
+                db.SaveChanges();
+                return RedirectToAction("index");
             }
             catch
             {
@@ -75,22 +77,9 @@ namespace ProjetoSushiTime.Controllers
         // GET: ProdutosController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: ProdutosController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            db.PRODUTOS.Remove(db.PRODUTOS.Where(a => a.Id == id).FirstOrDefault());
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
