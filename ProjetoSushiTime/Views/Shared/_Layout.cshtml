@@ -14,33 +14,49 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4">
             
-            <div class="container">
-                <a asp-area="" asp-controller="Home" asp-action="Index" style="margin-right: 50px;"><img src="~/imagens/logo_sushi-timev3.png" style="width:125px;"/></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1" style="font-family: League Spartan; font-size: 1.5rem">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="container-fluid p-3 my-3 border">
+                
+                    <a asp-area="" asp-controller="Home" asp-action="Index" style="margin-right: 50px;"><img src="~/imagens/logo_sushi-timev3.png" style="width:125px;" /></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ">
+                        <ul class="navbar-nav flex-grow-1 ml-auto" style="font-family: League Spartan; font-size: 1.5rem">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
+                            </li>
+                            
+                        </ul>
+                        <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px;">
+
+                            <li class="nav-item ml-auto">
+                                <a class="btn btn-success " style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-success ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">Registre-se</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-success ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">IIdC</a><!--IIdC = Insira Imagem do Carrinho-->
+                                
+                            </li>
+                        </ul>
+                    </div>
+                
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container-fluid">
             &copy; 2022 - ProjetoSushiTime - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
