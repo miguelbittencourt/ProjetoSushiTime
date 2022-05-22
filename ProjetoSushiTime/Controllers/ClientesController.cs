@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoSushiTime.Controllers
 {
-    [Authorize(AuthenticationSchemes = "CookieAuthentication")]
+    //[Authorize(AuthenticationSchemes = "CookieAuthentication")]
     public class ClientesController : Controller
     {
         private readonly Contexto db;
@@ -56,17 +56,19 @@ namespace ProjetoSushiTime.Controllers
         // GET: ClientesController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(db.CLIENTES.Where(a => a.Id == id).FirstOrDefault());
         }
 
         // POST: ClientesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Cliente collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                db.CLIENTES.Update(collection);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -77,22 +79,9 @@ namespace ProjetoSushiTime.Controllers
         // GET: ClientesController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: ClientesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            db.CLIENTES.Remove(db.CLIENTES.Where(a => a.Id == id).FirstOrDefault());
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

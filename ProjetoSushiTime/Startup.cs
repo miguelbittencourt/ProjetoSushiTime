@@ -27,7 +27,7 @@ namespace ProjetoSushiTime
             services.AddDbContext<Contexto>(a => a.UseMySQL("Server=localhost;Database=SushiBD;Uid=root;Pwd=;"));
             services.AddAuthentication("CookiesAuthentication").AddCookie("CookieAuthentication", option =>
             {
-                option.LoginPath = "/Login/Entrar";
+                option.LoginPath = "/Login/Login";
                 option.AccessDeniedPath = "/Login/Negado";
             });
         }

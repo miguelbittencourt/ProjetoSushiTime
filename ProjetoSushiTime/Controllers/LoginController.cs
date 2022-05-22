@@ -23,9 +23,9 @@ namespace ProjetoSushiTime.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string login, string senha)
+        public async Task<IActionResult> Login(string nome, string senha)
         {
-            Cliente usuarioLogado = db.CLIENTES.Where(a => a.Nome == login && a.Senha == senha).FirstOrDefault();
+            Cliente usuarioLogado = db.CLIENTES.Where(a => a.Nome == nome && a.Senha == senha).FirstOrDefault();
 
             if (usuarioLogado == null)
             {
@@ -47,7 +47,7 @@ namespace ProjetoSushiTime.Controllers
         public async Task<IActionResult> Logoff()
         {
             await HttpContext.SignOutAsync("CookieAuthentication");
-            return Redirect("/Login/Login");
+            return Redirect("/Home/Index");
         }
     }
 }
