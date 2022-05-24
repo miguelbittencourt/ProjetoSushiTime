@@ -21,7 +21,7 @@ namespace ProjetoSushiTime.Controllers
         // GET: ClientesController
         public ActionResult Index()
         {
-            return View(db.CLIENTES.ToList());
+            return View(db.USUARIOS.ToList());
         }
 
         // GET: ClientesController/Details/5
@@ -39,11 +39,11 @@ namespace ProjetoSushiTime.Controllers
         // POST: ClientesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Cliente collection)
+        public ActionResult Create(Usuarios collection)
         {
             try
             {
-                db.CLIENTES.Add(collection);
+                db.USUARIOS.Add(collection);
                 db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -56,19 +56,19 @@ namespace ProjetoSushiTime.Controllers
         // GET: ClientesController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(db.CLIENTES.Where(a => a.Id == id).FirstOrDefault());
+            return View(db.USUARIOS.Where(a => a.Id == id).FirstOrDefault());
         }
 
         // POST: ClientesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Cliente collection)
+        public ActionResult Edit(int id, Usuarios collection)
         {
             try
             {
-                db.CLIENTES.Update(collection);
+                db.USUARIOS.Update(collection);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -79,7 +79,7 @@ namespace ProjetoSushiTime.Controllers
         // GET: ClientesController/Delete/5
         public ActionResult Delete(int id)
         {
-            db.CLIENTES.Remove(db.CLIENTES.Where(a => a.Id == id).FirstOrDefault());
+            db.USUARIOS.Remove(db.USUARIOS.Where(a => a.Id == id).FirstOrDefault());
             db.SaveChanges();
             return RedirectToAction("Index");
         }

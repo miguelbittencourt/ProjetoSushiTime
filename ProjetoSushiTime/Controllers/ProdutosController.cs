@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoSushiTime.Controllers
 {
-    [Authorize(AuthenticationSchemes = "CookieAuthentication")]
+    //[Authorize(AuthenticationSchemes = "CookieAuthentication")]
     public class ProdutosController : Controller
     {
         private readonly Contexto db;

@@ -1,13 +1,13 @@
-﻿@model IEnumerable<ProjetoSushiTime.Entidades.Cliente>
+﻿@model IEnumerable<ProjetoSushiTime.Entidades.Usuarios>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Clientes</h1>
+<h1>Usuários</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Novo Usuário</a>
 </p>
 <table class="table">
     <thead>
@@ -16,10 +16,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
+                @Html.DisplayNameFor(model => model.Login)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Senha)
@@ -34,18 +31,15 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
+                @Html.DisplayFor(modelItem => item.Login)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Senha)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
