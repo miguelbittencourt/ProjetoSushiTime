@@ -16,5 +16,7 @@ namespace ProjetoSushiTime
         public DbSet<Usuarios> USUARIOS { get; set; }
 
         public DbSet<Produtos> PRODUTOS { get; set; }
+
+        public DbSet<Produtos> ATENDENTE { get; set; }
     }
 }
