@@ -1,10 +1,56 @@
-﻿@{
+﻿@model IEnumerable<ProjetoSushiTime.Entidades.Produtos>
+@{
     ViewData["Title"] = "Home Page";
+
 }
 
-<div class="container">
-    <div class="row">
-        <h1 class="display-4" style="font-family: League Spartan;">Sushi Time</h1>
+<style>
+    h1{
+        font-weight: 600;
+        font-family: League Spartan;
+    }
+    body{
+        background-color: white;
+    }
+    img {
+        width: 242px;
+        border-radius: 10px;
+    }
+
+    .card-home {
+        height: 360px;
+        background-color: #f3f3f3;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    h5 {
+        color: #83BA5B;
+        font-size: 25px;
+    }
+</style>
+
+<h1 class="text-center" style="color:#f63c3c">Bem-Vindo ao Sushi Time!</h1>
+<h1 class="text-center" style="color:#f63c3c; margin-bottom: 70px">Faça login para realizar um pedido</h1>
+
+<div class="container card-container">
+    <div class="card-home text-center">
+        <img src="~/imagens/sushi.jpg"style="margin-bottom: 15px"/> <br />
+        <h4 style="margin-bottom: 15px"> 20x Sushi de Salmão</h4>
+        <h5>R$ 15,90</h5>
+    </div>
+    <div class="card-home text-center">
+        <img src="~/imagens/sashimi.jpg" style="margin-bottom: 15px" /> <br />
+        <h4 style="margin-bottom:15px"> Sashimi </h4>
+        <h5> R$ 39,90 </h5>
+    </div>
+    <div class="card-home text-center">
+        <img src="~/imagens/temaki.jpg" style="margin-bottom: 15px" />
+        <h4 style="margin-bottom: 15px"> Temaki </h4>
+        <h5> R$ 29,90</h5>
     </div>
 </div>
-

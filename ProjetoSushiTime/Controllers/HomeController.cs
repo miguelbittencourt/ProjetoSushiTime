@@ -12,15 +12,16 @@ namespace ProjetoSushiTime.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly Contexto db;
+        public HomeController(ILogger<HomeController> logger, Contexto _db)
         {
             _logger = logger;
+            db = _db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(db.PRODUTOS.ToList());
         }
 
 
