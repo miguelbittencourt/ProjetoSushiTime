@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoSushiTime.Entidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,10 +14,14 @@ namespace ProjetoSushiTime.Controllers
     //[Authorize(AuthenticationSchemes = "CookieAuthentication")]
     public class ProdutosController : Controller
     {
+        private string caminhoServidor;
+
+       
         private readonly Contexto db;
-        public ProdutosController(Contexto contexto)
+        public ProdutosController(Contexto contexto, IWebHostEnvironment sistema)
         {
             db = contexto;
+            caminhoServidor = sistema.WebRootPath;
         }
 
         // GET: ProdutosController
@@ -39,15 +45,29 @@ namespace ProjetoSushiTime.Controllers
         // POST: ProdutosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Produtos collection)
+        public ActionResult Create(Produtos collection, IFormFile foto)
         {
             try
             {
+
+                string caminhoParaSalvarImagem = caminhoServidor + "\\imagens\\";
+                string novoNomeParaImagem = Guid.NewGuid().ToString() + "_" + foto.FileName;
+
+                if (!Directory.Exists(caminhoParaSalvarImagem))
+                {
+                    Directory.CreateDirectory(caminhoParaSalvarImagem);
+                }
+
+                using (var stream = System.IO.File.Create(caminhoParaSalvarImagem + novoNomeParaImagem))
+                {
+                    foto.CopyToAsync(stream);
+                }
+                collection.Imagem = caminhoParaSalvarImagem + novoNomeParaImagem;
                 db.PRODUTOS.Add(collection);
                 db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
@@ -83,5 +103,7 @@ namespace ProjetoSushiTime.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+       
+      
     }
 }
