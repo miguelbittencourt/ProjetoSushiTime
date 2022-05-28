@@ -56,7 +56,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
                             </li>
-                            
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Cardapio">Cardapio</a>
+                            </li>
+
                         </ul>
                         @if(User.IsInRole("Logado") && User.IsInRole("Atendente"))
                         {
