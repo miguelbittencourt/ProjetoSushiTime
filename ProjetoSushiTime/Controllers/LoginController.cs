@@ -26,6 +26,7 @@ namespace ProjetoSushiTime.Controllers
         public async Task<IActionResult> Login(string login, string senha)
         {
             Usuarios usuarioLogado = db.USUARIOS.Where(a => a.Login == login && a.Senha == senha).FirstOrDefault();
+            //Usuarios clienteLogado = db.USUARIOS.Where(a => a.Login == login && a.Senha == senha).FirstOrDefault();
 
             if (usuarioLogado == null)
             {
@@ -37,6 +38,7 @@ namespace ProjetoSushiTime.Controllers
             claims.Add(new Claim(ClaimTypes.Name, usuarioLogado.Login));
             claims.Add(new Claim(ClaimTypes.Sid, usuarioLogado.Id.ToString()));
             claims.Add(new Claim(ClaimTypes.Role, "Logado"));
+            claims.Add(new Claim(ClaimTypes.Role, "Atendente"));
 
             var userIdentity = new ClaimsIdentity(claims, "Acesso");
 

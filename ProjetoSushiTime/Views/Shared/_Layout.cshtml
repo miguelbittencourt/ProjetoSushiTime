@@ -14,6 +14,8 @@
             background-color: white;
             color: #F63C3C;
             border-radius: 5px;
+            border: 2px solid #F63C3C;
+            padding: 7px 15px;
         }
 
         .botao-outline:hover {
@@ -26,6 +28,7 @@
             background-color: #F63C3C;
             color: white;
             border-radius: 5px;
+            padding: 8px 16px;
         }
 
         .botao:hover {
@@ -36,7 +39,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-4" style="max-height: 150px;">
             
             <div class="container-fluid p-3 my-3">
                 
@@ -55,27 +58,49 @@
                             </li>
                             
                         </ul>
-                        @if(User.IsInRole("Logado") )
+                        @if(User.IsInRole("Logado") && User.IsInRole("Atendente"))
                         {
-                            <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px;">
-                            <li class="nav-item ml-auto">
-                                <a class="btn btn-outline botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Clientes" asp-action="Create">
-                                    Logado
-                                </a>
-                            </li>
-                        </ul>
-                        }else{
-                            <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px;">
-                                    <li class="nav-item ml-auto">
-                                        <a class="btn btn-outline botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Clientes" asp-action="Create">Cadastrar-se</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="btn botao ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="ml-5" asp-area="" asp-controller="" asp-action=""><img src="~/imagens/carrinho1.png" style="width: 23px; top: 50%; left: 50%; transform: translate(-25%, 10%); border-radius:0"></a>
-                                    </li>
-                                </ul>
+                            <ul class="navbar-nav flex-grow-1 ml-5" style="padding:5px; display: flex; align-items: center; justify-content: space-between">
+                                <li class="nav-item ml-auto">
+                                    <h5 style="font-family: League Spartan; color: #F63C3C">
+                                        Logado como Atendente
+                                    </h5>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Logoff">
+                                        Sair
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                        else if (User.IsInRole("Logado") && User.IsInRole("Cliente"))
+                        {
+                            <ul class="navbar-nav flex-grow-1 ml-5" style="padding:5px; display: flex; align-items: center; justify-content: space-between">
+                                <li class="nav-item ml-auto">
+                                    <h5 style="font-family: League Spartan; color: #F63C3C">
+                                        Logado como Cliente
+                                    </h5>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Logoff">
+                                        Sair
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px; display: flex; align-items: center">
+                                <li class="nav-item ml-auto">
+                                    <a class="btn btn-outline botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Clientes" asp-action="Create">Cadastrar-se</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn botao ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="ml-5" asp-area="" asp-controller="" asp-action=""><img src="~/imagens/carrinho1.png" style="width: 23px; top: 50%; left: 50%; transform: translate(-25%, 10%); border-radius:0"></a>
+                                </li>
+                            </ul>
                         }
                     </div>
                 
