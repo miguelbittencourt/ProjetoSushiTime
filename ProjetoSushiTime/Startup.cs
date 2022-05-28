@@ -25,7 +25,7 @@ namespace ProjetoSushiTime
         {
             services.AddControllersWithViews();
             services.AddDbContext<Contexto>(a => a.UseMySQL("Server=localhost;Database=SushiBD;Uid=root;Pwd=;"));
-            services.AddAuthentication("CookiesAuthentication").AddCookie("CookieAuthentication", option =>
+            services.AddAuthentication("CookieAuthentication").AddCookie("CookieAuthentication", option =>
             {
                 option.LoginPath = "/Login/Login";
                 option.AccessDeniedPath = "/Login/Negado";
@@ -46,9 +46,9 @@ namespace ProjetoSushiTime
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseAuthentication();
+          
 
             app.UseEndpoints(endpoints =>
             {

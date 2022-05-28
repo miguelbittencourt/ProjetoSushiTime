@@ -36,11 +36,16 @@ namespace ProjetoSushiTime.Controllers
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, usuarioLogado.Login));
             claims.Add(new Claim(ClaimTypes.Sid, usuarioLogado.Id.ToString()));
+            claims.Add(new Claim(ClaimTypes.Role, "Logado"));
 
             var userIdentity = new ClaimsIdentity(claims, "Acesso");
 
             ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-            await HttpContext.SignInAsync("CookieAuthentication", principal, new AuthenticationProperties());
+            await HttpContext.SignInAsync("CookieAuthentication", principal, new AuthenticationProperties
+            {
+                ExpiresUtc = DateTime.UtcNow.AddDays(50),
+                IsPersistent = true
+            });
 
             return Redirect("/");
         }

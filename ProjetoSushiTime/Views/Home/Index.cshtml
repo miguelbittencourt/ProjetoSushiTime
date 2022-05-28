@@ -38,6 +38,15 @@
 <h1 class="text-center" style="color:#f63c3c; margin-bottom: 70px">Faça login para realizar um pedido</h1>
 
 <div class="container card-container">
+    @foreach (var item in Model)
+    {
+          <div class="card-home text-center">
+        <img src="@item.Imagem"style="margin-bottom: 15px"/> <br />
+        <h4 style="margin-bottom: 15px"> @item.Nome</h4>
+        <h5>R$ @item.Valor</h5>
+    </div>
+    }
+
     <div class="card-home text-center">
         <img src="~/imagens/sushi.jpg"style="margin-bottom: 15px"/> <br />
         <h4 style="margin-bottom: 15px"> 20x Sushi de Salmão</h4>

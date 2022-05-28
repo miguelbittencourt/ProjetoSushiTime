@@ -45,13 +45,13 @@ namespace ProjetoSushiTime.Controllers
         // POST: ProdutosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Produtos collection, IFormFile foto)
+        public async Task<ActionResult> Create(Produtos collection, IFormFile foto)
         {
             try
             {
 
                 string caminhoParaSalvarImagem = caminhoServidor + "\\imagens\\";
-                string novoNomeParaImagem = Guid.NewGuid().ToString() + "_" + foto.FileName;
+                string novoNomeParaImagem =  foto.FileName;
 
                 if (!Directory.Exists(caminhoParaSalvarImagem))
                 {
@@ -60,9 +60,9 @@ namespace ProjetoSushiTime.Controllers
 
                 using (var stream = System.IO.File.Create(caminhoParaSalvarImagem + novoNomeParaImagem))
                 {
-                    foto.CopyToAsync(stream);
+                    await foto.CopyToAsync(stream);
                 }
-                collection.Imagem = caminhoParaSalvarImagem + novoNomeParaImagem;
+                collection.Imagem = "/imagens/" + foto.FileName;
                 db.PRODUTOS.Add(collection);
                 db.SaveChanges();
                 return RedirectToAction(nameof(Index));

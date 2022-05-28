@@ -55,17 +55,28 @@
                             </li>
                             
                         </ul>
-                        <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px;">
+                        @if(User.IsInRole("Logado") )
+                        {
+                            <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px;">
                             <li class="nav-item ml-auto">
-                                <a class="btn btn-outline botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Clientes" asp-action="Create">Cadastrar-se</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn botao ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="ml-5" asp-area="" asp-controller="" asp-action=""><img src="~/imagens/carrinho1.png" style="width: 23px; top: 50%; left: 50%; transform: translate(-25%, 10%); border-radius:0"></a>
+                                <a class="btn btn-outline botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Clientes" asp-action="Create">
+                                    Logado
+                                </a>
                             </li>
                         </ul>
+                        }else{
+                            <ul class="navbar-nav flex-grow-1 ml-5 " style="padding:5px;">
+                                    <li class="nav-item ml-auto">
+                                        <a class="btn btn-outline botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Clientes" asp-action="Create">Cadastrar-se</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="btn botao ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="ml-5" asp-area="" asp-controller="" asp-action=""><img src="~/imagens/carrinho1.png" style="width: 23px; top: 50%; left: 50%; transform: translate(-25%, 10%); border-radius:0"></a>
+                                    </li>
+                                </ul>
+                        }
                     </div>
                 
             </div>
