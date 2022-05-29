@@ -50,16 +50,24 @@
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ">
                         <ul class="navbar-nav flex-grow-1 ml-auto" style="font-family: League Spartan; font-size: 1.5rem">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Cardapio">Cardapio</a>
-                            </li>
-
+                            @if (User.IsInRole("Logado") && User.IsInRole("Atendente"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Gerenciar Produtos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Pedidos" asp-action="Index">Gerenciar Pedidos</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Cardápio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Pedidos" asp-action="Index">Pedidos</a>
+                                </li>
+                            }
                         </ul>
                         @if(User.IsInRole("Logado") && User.IsInRole("Atendente"))
                         {
