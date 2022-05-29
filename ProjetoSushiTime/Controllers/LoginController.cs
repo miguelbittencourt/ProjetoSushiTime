@@ -38,7 +38,7 @@ namespace ProjetoSushiTime.Controllers
             claims.Add(new Claim(ClaimTypes.Name, usuarioLogado.Login));
             claims.Add(new Claim(ClaimTypes.Sid, usuarioLogado.Id.ToString()));
             claims.Add(new Claim(ClaimTypes.Role, "Logado"));
-            claims.Add(new Claim(ClaimTypes.Role, "Atendente"));
+            claims.Add(new Claim(ClaimTypes.Role, "Cliente"));
 
             var userIdentity = new ClaimsIdentity(claims, "Acesso");
 
