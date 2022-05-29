@@ -29,7 +29,10 @@ namespace ProjetoSushiTime.Controllers
         {
             return View(db.PRODUTOS.ToList());
         }
-
+        public ActionResult Cardapio()
+        {
+            return View(db.PRODUTOS.ToList());
+        }
         // GET: ProdutosController/Details/5
         public ActionResult Details(int id)
         {
@@ -88,7 +91,7 @@ namespace ProjetoSushiTime.Controllers
             {
                 db.PRODUTOS.Update(dadosTela);
                 db.SaveChanges();
-                return RedirectToAction("index");
+                return RedirectToAction("Index");
             }
             catch
             {
