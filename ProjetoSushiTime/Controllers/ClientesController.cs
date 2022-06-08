@@ -24,11 +24,11 @@ namespace ProjetoSushiTime.Controllers
             return View(db.USUARIOS.ToList());
         }
 
-        // GET: ClientesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //// GET: ClientesController/Details/5
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
 
         // GET: ClientesController/Create
         public ActionResult Create()
@@ -53,28 +53,28 @@ namespace ProjetoSushiTime.Controllers
             }
         }
 
-        // GET: ClientesController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View(db.USUARIOS.Where(a => a.Id == id).FirstOrDefault());
-        }
+        //// GET: ClientesController/Edit/5
+        //public ActionResult Edit(int id)
+        //{
+        //    return View(db.USUARIOS.Where(a => a.Id == id).FirstOrDefault());
+        //}
 
         // POST: ClientesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Usuarios collection)
-        {
-            try
-            {
-                db.USUARIOS.Update(collection);
-                db.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //public ActionResult Edit(int id, Usuarios collection)
+        //{
+        //    try
+        //    {
+        //        db.USUARIOS.Update(collection);
+        //        db.SaveChanges();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: ClientesController/Delete/5
         public ActionResult Delete(int id)
