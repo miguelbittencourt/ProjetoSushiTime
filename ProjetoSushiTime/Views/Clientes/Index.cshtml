@@ -1,14 +1,11 @@
-﻿@model IEnumerable<ProjetoSushiTime.Entidades.Usuarios>
+﻿@model IEnumerable<ProjetoSushiTime.Entidades.Cliente>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Usuários</h1>
+<h1>Lista de Clientes</h1>
 
-<p>
-    <a asp-action="Create">Novo Usuário</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -16,11 +13,26 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Login)
+                @Html.DisplayNameFor(model => model.Nome)
             </th>
-            <!-- <th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logradouro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroCasa)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Senha)
-            </th> -->
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -31,15 +43,30 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Login)
+                @Html.DisplayFor(modelItem => item.Nome)
             </td>
-        <!--<td>
-                @Html.DisplayFor(modelItem => item.Senha)
-            </td> -->
             <td>
-                <a class="btn botao-outline ml-4" style="font-family: League Spartan;" asp-area="" asp-controller="Login" asp-action="Logoff">
-                    Sair
-                </a>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logradouro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroCasa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

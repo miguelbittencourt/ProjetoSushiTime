@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoSushiTime.Entidades;
+using ProjetoSushiTime.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace ProjetoSushiTime.Controllers
         // GET: ClientesController
         public ActionResult Index()
         {
-            return View(db.USUARIOS.ToList());
+            return View(db.CLIENTES.ToList());
         }
 
         //// GET: ClientesController/Details/5
@@ -39,12 +40,29 @@ namespace ProjetoSushiTime.Controllers
         // POST: ClientesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Usuarios collection)
+        public ActionResult Create(CadastroViewModel collection)
         {
             try
             {
-                db.USUARIOS.Add(collection);
+                Usuarios usuarios = new Usuarios();
+                usuarios.Login = collection.Login;
+                usuarios.Senha = collection.Senha;
+
+                db.USUARIOS.Add(usuarios);
                 db.SaveChanges();
+
+                Cliente cliente = new Cliente();
+                cliente.Nome = collection.Login;
+                cliente.Logradouro = collection.Logradouro;
+                cliente.NumeroCasa = collection.NumeroCasa;
+                cliente.Telefone = collection.Telefone;
+                cliente.Bairro = collection.Bairro;
+                cliente.Cidade = collection.Cidade;
+
+                db.CLIENTES.Add(cliente);
+                db.SaveChanges();
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch
