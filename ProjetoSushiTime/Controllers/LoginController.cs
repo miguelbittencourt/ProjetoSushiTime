@@ -34,15 +34,17 @@ namespace ProjetoSushiTime.Controllers
                 return View();
             }
 
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, usuarioLogado.Login));
-            claims.Add(new Claim(ClaimTypes.Sid, usuarioLogado.Id.ToString()));
-            claims.Add(new Claim(ClaimTypes.Role, "Logado"));
-            claims.Add(new Claim(ClaimTypes.Role, "Cliente"));
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, usuarioLogado.Login),
+                new Claim(ClaimTypes.Sid, usuarioLogado.Id.ToString()),
+                new Claim(ClaimTypes.Role, "Logado"),
+                new Claim(ClaimTypes.Role, "Atendente")
+            };
 
             var userIdentity = new ClaimsIdentity(claims, "Acesso");
 
-            ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+            ClaimsPrincipal principal = new(userIdentity);
             await HttpContext.SignInAsync("CookieAuthentication", principal, new AuthenticationProperties
             {
                 ExpiresUtc = DateTime.UtcNow.AddDays(50),

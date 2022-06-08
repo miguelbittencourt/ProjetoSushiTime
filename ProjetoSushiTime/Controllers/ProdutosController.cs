@@ -34,10 +34,10 @@ namespace ProjetoSushiTime.Controllers
             return View(db.PRODUTOS.ToList());
         }
         // GET: ProdutosController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
 
         // GET: ProdutosController/Create
         public ActionResult Create()
