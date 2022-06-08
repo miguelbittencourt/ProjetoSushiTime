@@ -26,9 +26,9 @@
         <div class="bloco-cadastro">
             <h4>Informações de Login</h4>
             <div class="form-group">
-                <label asp-for="nomeUsuario" class="control-label">Nome de Usuário</label>
-                <input asp-for="nomeUsuario" class="form-control" />
-                <span asp-validation-for="nomeUsuario" class="text-danger"></span>
+                <label asp-for="NomeUsuario" class="control-label">Nome de Usuário</label>
+                <input asp-for="NomeUsuario" class="form-control" />
+                <span asp-validation-for="NomeUsuario" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Senha" class="control-label"></label>
@@ -59,14 +59,14 @@
                 <span asp-validation-for="Logradouro" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="numeroCasa" class="control-label">Número</label>
-                <input asp-for="numeroCasa" class="form-control" />
-                <span asp-validation-for="numeroCasa" class="text-danger"></span>
+                <label asp-for="NumeroCasa" class="control-label">Número</label>
+                <input asp-for="NumeroCasa" class="form-control" />
+                <span asp-validation-for="NumeroCasa" class="text-danger"></span>
             </div>
         </div>
     </div>
     <div class="form-group text-center">
-        <a class="btn btn-danger" style="background-color: #F63C3C;" asp-controller="home" asp-action="Index">Cancelar</a>
+        <a class="btn btn-danger" style="background-color: #F63C3C;" asp-controller="Home" asp-action="Index">Cancelar</a>
         <input type="submit" style="background-color: #4CAF50;" value="Confirmar" class="btn btn-success" />
     </div>
 </form>
